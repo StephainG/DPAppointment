@@ -1,0 +1,39 @@
+{% include 'base.html' %}
+{% include 'navigation.html' %} 
+{% block content %}
+
+{% ifequal error "no" %}
+<script>
+    alert("Record saved successfully");
+    window.location = "{% url 'view_doctor' %}";
+</script>
+{% endifequal %}
+
+{% ifequal error "yes" %}
+<script>
+    alert("Invalid login, try again");
+</script>
+{% endifequal %}
+
+<div class="container">
+    <h2 class="text-center">Add Doctor</h2>
+    <form method="POST">{% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Doctor name</label>
+            <input type="text" class="form-control" name="name">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Mobile</label>
+            <input type="text" class="form-control" name="mobile">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Special</label>
+            <input type="text" class="form-control" name="special">
+        </div>
+        
+        <input type="submit" class="form-control btn btn-info" value="Login">
+    </form>
+</div>
+{% endblock content %}
+
+{% include 'footer.html' %}
