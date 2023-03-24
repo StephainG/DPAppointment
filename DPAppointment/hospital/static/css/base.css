@@ -12,3 +12,8 @@
     margin-top: 30px;
     margin-bottom: 30px;
 }
+
+.bg-image {
+    /* Add the blur effect */
+    filter: blur(8px);
+}

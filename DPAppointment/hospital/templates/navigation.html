@@ -6,6 +6,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+          {% if not request.user.is_staff %}
           <li class="nav-item">
             <a class="nav-link navbar-text" aria-current="page" href="{% url 'home' %}">Home</a>
           </li>
@@ -15,12 +16,14 @@
           <li class="nav-item">
             <a class="nav-link navbar-text" href="{% url 'about' %}">About</a>
           </li>
-          {% if not request.user.is_staff %}
           <li class="nav-item">
             <a class="nav-link navbar-text" href="{% url 'admin_login' %}">Login</a>
           </li>
           {% endif %}
           {% if request.user.is_staff %}
+          <li class="nav-item">
+            <a class="nav-link navbar-text" href="{% url 'dashboard' %}">Dashboard <span class="sr-only">(current)</span></a>
+          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle navbar-text" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Doctor
@@ -37,6 +40,15 @@
             <ul class="dropdown-menu">
               <li><a class="dropdown-item navbar-text" href="{% url 'view_patient' %}">View_Patient</a></li>
               <li><a class="dropdown-item navbar-text" href="{% url 'add_patient' %}">Add_Patient</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle navbar-text" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Appointment
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item navbar-text" href="{% url 'view_appointment' %}">View_Appointment</a></li>
+              <li><a class="dropdown-item navbar-text" href="{% url 'add_appointment' %}">Add_Appointment</a></li>
             </ul>
           </li>
           <li class="nav-item">

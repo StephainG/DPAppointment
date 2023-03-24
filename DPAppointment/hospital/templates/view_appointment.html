@@ -1,0 +1,37 @@
+{% include 'base.html' %}
+{% include 'navigation.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <h2 class="text-center m-3">Available Doctors</h2>
+    <table id="example" class="table table-info table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Appointment_id</th>
+            <th scope="col">Doctor's name</th>
+            <th scope="col">Patient's name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for i in doc %}
+          <tr>
+            <th scope="row">{{i.id}}</th>
+            <td>{{i.doctor}}</td>
+            <td>{{i.patient}}</td>
+            <td>{{i.date}}</td>
+            <td>{{i.time}}</td>
+            <td><a href="{% url 'delete_appointment' i.id %}" onclick="return confirm('Are you sure you want to delete {{i.doctor}} ?')" class="btn btn-danger">Delete</a></td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+</div>
+
+{% endblock content %}
+
+{% include 'footer.html' %}

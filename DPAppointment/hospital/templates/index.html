@@ -2,9 +2,41 @@
 {% include 'navigation.html' %}
 {% load static %}
 
+<style>
+    .myDiv:hover {
+        box-shadow: 0 0 12px rgba(121, 120, 120, 0.377);
+        transform: translateY(-2em);
+}
+
+    hr.rounded{
+        border-top: 10px solid rgb(22, 129, 158);
+        border-radius: 5px;
+    }
+</style>
+
 {% block content %}
 
-    <h1>Admin Dashboard</h1>
+<h1 class="text-center">Admin Dashboard</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 myDiv">
+            <h2 style="color:red;">{{d}}</h2>
+            <a href="{% url 'view_doctor' %}"><h4 style="color:blue;">Doctor</h4></a>
+            <hr class="rounded">
+        </div>
+        <div class="col-sm-4 myDiv">
+            <h2 style="color:red;">{{p}}</h2>
+            <a href="{% url 'view_patient' %}"><h4 style="color:blue;">Patient</h4></a>
+            <hr class="rounded">
+        </div>
+        <div class="col-sm-4 myDiv">
+            <h2 style="color:red;">{{a}}</h2>
+            <a href="{% url 'view_appointment' %}"><h4 style="color:blue;">Appointment</h4></a>
+            <hr class="rounded">
+        </div>
+    </div>
+</div>
 
 {% endblock content %}
 
